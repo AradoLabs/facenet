@@ -1,0 +1,487 @@
+arguments: src/align/align_dataset_mtcnn.py arado/raw arado/arado_160 --image_size 160 --margin 32 --random_order --gpu_memory_fraction 0.25
+--------------------
+tensorflow version: 1.2.0
+--------------------
+git hash: 27d02de001e86b673450707997794e7584ef9651
+--------------------
+diff --git a/arado/arado_160/anssi/anssi.png b/arado/arado_160/anssi/anssi.png
+deleted file mode 100644
+index ff02b2b..0000000
+Binary files a/arado/arado_160/anssi/anssi.png and /dev/null differ
+diff --git a/arado/arado_160/anssi/arado-2.png b/arado/arado_160/anssi/arado-2.png
+deleted file mode 100644
+index 6c875ee..0000000
+Binary files a/arado/arado_160/anssi/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160/anssi/arado.png b/arado/arado_160/anssi/arado.png
+deleted file mode 100644
+index 3f7d5d6..0000000
+Binary files a/arado/arado_160/anssi/arado.png and /dev/null differ
+diff --git a/arado/arado_160/anssi/twitter.png b/arado/arado_160/anssi/twitter.png
+deleted file mode 100644
+index 867ff68..0000000
+Binary files a/arado/arado_160/anssi/twitter.png and /dev/null differ
+diff --git a/arado/arado_160/henrik/arado-2.png b/arado/arado_160/henrik/arado-2.png
+deleted file mode 100644
+index 2b89a3b..0000000
+Binary files a/arado/arado_160/henrik/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160/henrik/arado.png b/arado/arado_160/henrik/arado.png
+deleted file mode 100644
+index 5a226f1..0000000
+Binary files a/arado/arado_160/henrik/arado.png and /dev/null differ
+diff --git a/arado/arado_160/henrik/henrik.png b/arado/arado_160/henrik/henrik.png
+deleted file mode 100644
+index c148e44..0000000
+Binary files a/arado/arado_160/henrik/henrik.png and /dev/null differ
+diff --git a/arado/arado_160/henrik/twitter.png b/arado/arado_160/henrik/twitter.png
+deleted file mode 100644
+index 09ac61d..0000000
+Binary files a/arado/arado_160/henrik/twitter.png and /dev/null differ
+diff --git a/arado/arado_160/jarno/pic1.png b/arado/arado_160/jarno/pic1.png
+deleted file mode 100644
+index fd7366c..0000000
+Binary files a/arado/arado_160/jarno/pic1.png and /dev/null differ
+diff --git a/arado/arado_160/jarno/pic10.png b/arado/arado_160/jarno/pic10.png
+deleted file mode 100644
+index 2ab253d..0000000
+Binary files a/arado/arado_160/jarno/pic10.png and /dev/null differ
+diff --git a/arado/arado_160/jarno/pic11.png b/arado/arado_160/jarno/pic11.png
+deleted file mode 100644
+index 487de6b..0000000
+Binary files a/arado/arado_160/jarno/pic11.png and /dev/null differ
+diff --git a/arado/arado_160/jarno/pic2.png b/arado/arado_160/jarno/pic2.png
+deleted file mode 100644
+index ba9a802..0000000
+Binary files a/arado/arado_160/jarno/pic2.png and /dev/null differ
+diff --git a/arado/arado_160/jarno/pic3.png b/arado/arado_160/jarno/pic3.png
+deleted file mode 100644
+index 1f399b7..0000000
+Binary files a/arado/arado_160/jarno/pic3.png and /dev/null differ
+diff --git a/arado/arado_160/jarno/pic4.png b/arado/arado_160/jarno/pic4.png
+deleted file mode 100644
+index a0886fe..0000000
+Binary files a/arado/arado_160/jarno/pic4.png and /dev/null differ
+diff --git a/arado/arado_160/jarno/pic5.png b/arado/arado_160/jarno/pic5.png
+deleted file mode 100644
+index 5a57900..0000000
+Binary files a/arado/arado_160/jarno/pic5.png and /dev/null differ
+diff --git a/arado/arado_160/jarno/pic6.png b/arado/arado_160/jarno/pic6.png
+deleted file mode 100644
+index 6f1555e..0000000
+Binary files a/arado/arado_160/jarno/pic6.png and /dev/null differ
+diff --git a/arado/arado_160/jarno/pic7.png b/arado/arado_160/jarno/pic7.png
+deleted file mode 100644
+index 29d9bb2..0000000
+Binary files a/arado/arado_160/jarno/pic7.png and /dev/null differ
+diff --git a/arado/arado_160/jarno/pic8.png b/arado/arado_160/jarno/pic8.png
+deleted file mode 100644
+index 840c0fc..0000000
+Binary files a/arado/arado_160/jarno/pic8.png and /dev/null differ
+diff --git a/arado/arado_160/jarno/pic9.png b/arado/arado_160/jarno/pic9.png
+deleted file mode 100644
+index a131bd5..0000000
+Binary files a/arado/arado_160/jarno/pic9.png and /dev/null differ
+diff --git a/arado/arado_160/jarno/twitter.png b/arado/arado_160/jarno/twitter.png
+deleted file mode 100644
+index 70243f5..0000000
+Binary files a/arado/arado_160/jarno/twitter.png and /dev/null differ
+diff --git a/arado/arado_160/markus/markus.png b/arado/arado_160/markus/markus.png
+deleted file mode 100644
+index f3d519a..0000000
+Binary files a/arado/arado_160/markus/markus.png and /dev/null differ
+diff --git a/arado/arado_160/markus/twitter.png b/arado/arado_160/markus/twitter.png
+deleted file mode 100644
+index 6c15acd..0000000
+Binary files a/arado/arado_160/markus/twitter.png and /dev/null differ
+diff --git a/arado/arado_160/mika/arado-2.png b/arado/arado_160/mika/arado-2.png
+deleted file mode 100644
+index 31aa437..0000000
+Binary files a/arado/arado_160/mika/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160/mika/arado.png b/arado/arado_160/mika/arado.png
+deleted file mode 100644
+index 414bd8b..0000000
+Binary files a/arado/arado_160/mika/arado.png and /dev/null differ
+diff --git a/arado/arado_160/mika/mika.png b/arado/arado_160/mika/mika.png
+deleted file mode 100644
+index 2368a16..0000000
+Binary files a/arado/arado_160/mika/mika.png and /dev/null differ
+diff --git a/arado/arado_160/mika/twitter.png b/arado/arado_160/mika/twitter.png
+deleted file mode 100644
+index bf59030..0000000
+Binary files a/arado/arado_160/mika/twitter.png and /dev/null differ
+diff --git a/arado/arado_160/mikko/arado-2.png b/arado/arado_160/mikko/arado-2.png
+deleted file mode 100644
+index 853765c..0000000
+Binary files a/arado/arado_160/mikko/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160/mikko/arado.png b/arado/arado_160/mikko/arado.png
+deleted file mode 100644
+index 7407d8f..0000000
+Binary files a/arado/arado_160/mikko/arado.png and /dev/null differ
+diff --git a/arado/arado_160/mikko/mikko.png b/arado/arado_160/mikko/mikko.png
+deleted file mode 100644
+index 465be91..0000000
+Binary files a/arado/arado_160/mikko/mikko.png and /dev/null differ
+diff --git a/arado/arado_160/mikko/twitter.png b/arado/arado_160/mikko/twitter.png
+deleted file mode 100644
+index 4aa4288..0000000
+Binary files a/arado/arado_160/mikko/twitter.png and /dev/null differ
+diff --git a/arado/arado_160/stefano/arado-2.png b/arado/arado_160/stefano/arado-2.png
+deleted file mode 100644
+index 2b74690..0000000
+Binary files a/arado/arado_160/stefano/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160/stefano/arado.png b/arado/arado_160/stefano/arado.png
+deleted file mode 100644
+index f34b681..0000000
+Binary files a/arado/arado_160/stefano/arado.png and /dev/null differ
+diff --git a/arado/arado_160/stefano/stefano.png b/arado/arado_160/stefano/stefano.png
+deleted file mode 100644
+index 210d9f6..0000000
+Binary files a/arado/arado_160/stefano/stefano.png and /dev/null differ
+diff --git a/arado/arado_160/stefano/twitter.png b/arado/arado_160/stefano/twitter.png
+deleted file mode 100644
+index 406d3d1..0000000
+Binary files a/arado/arado_160/stefano/twitter.png and /dev/null differ
+diff --git a/arado/arado_160/teppo/teppo.png b/arado/arado_160/teppo/teppo.png
+deleted file mode 100644
+index 7f9c02b..0000000
+Binary files a/arado/arado_160/teppo/teppo.png and /dev/null differ
+diff --git a/arado/arado_160/teppo/teppo2.png b/arado/arado_160/teppo/teppo2.png
+deleted file mode 100644
+index ef06913..0000000
+Binary files a/arado/arado_160/teppo/teppo2.png and /dev/null differ
+diff --git a/arado/arado_160/timo/arado-2.png b/arado/arado_160/timo/arado-2.png
+deleted file mode 100644
+index 644bc34..0000000
+Binary files a/arado/arado_160/timo/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160/timo/arado.png b/arado/arado_160/timo/arado.png
+deleted file mode 100644
+index 6c83231..0000000
+Binary files a/arado/arado_160/timo/arado.png and /dev/null differ
+diff --git a/arado/arado_160/timo/timo.png b/arado/arado_160/timo/timo.png
+deleted file mode 100644
+index 9be4caf..0000000
+Binary files a/arado/arado_160/timo/timo.png and /dev/null differ
+diff --git a/arado/arado_160/timo/twitter.png b/arado/arado_160/timo/twitter.png
+deleted file mode 100644
+index 2965450..0000000
+Binary files a/arado/arado_160/timo/twitter.png and /dev/null differ
+diff --git a/arado/arado_160/ville/arado.png b/arado/arado_160/ville/arado.png
+deleted file mode 100644
+index b5c6592..0000000
+Binary files a/arado/arado_160/ville/arado.png and /dev/null differ
+diff --git a/arado/arado_160/ville/twitter.png b/arado/arado_160/ville/twitter.png
+deleted file mode 100644
+index 8a2e668..0000000
+Binary files a/arado/arado_160/ville/twitter.png and /dev/null differ
+diff --git a/arado/arado_160/ville/ville.png b/arado/arado_160/ville/ville.png
+deleted file mode 100644
+index 874f9eb..0000000
+Binary files a/arado/arado_160/ville/ville.png and /dev/null differ
+diff --git a/arado/arado_160_test/anssi/anssi.png b/arado/arado_160_test/anssi/anssi.png
+deleted file mode 100644
+index ff02b2b..0000000
+Binary files a/arado/arado_160_test/anssi/anssi.png and /dev/null differ
+diff --git a/arado/arado_160_test/anssi/arado-2.png b/arado/arado_160_test/anssi/arado-2.png
+deleted file mode 100644
+index 6c875ee..0000000
+Binary files a/arado/arado_160_test/anssi/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160_test/anssi/arado.png b/arado/arado_160_test/anssi/arado.png
+deleted file mode 100644
+index 3f7d5d6..0000000
+Binary files a/arado/arado_160_test/anssi/arado.png and /dev/null differ
+diff --git a/arado/arado_160_test/henrik/arado-2.png b/arado/arado_160_test/henrik/arado-2.png
+deleted file mode 100644
+index 2b89a3b..0000000
+Binary files a/arado/arado_160_test/henrik/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160_test/henrik/arado.png b/arado/arado_160_test/henrik/arado.png
+deleted file mode 100644
+index 5a226f1..0000000
+Binary files a/arado/arado_160_test/henrik/arado.png and /dev/null differ
+diff --git a/arado/arado_160_test/jarno/pic1.png b/arado/arado_160_test/jarno/pic1.png
+deleted file mode 100644
+index fd7366c..0000000
+Binary files a/arado/arado_160_test/jarno/pic1.png and /dev/null differ
+diff --git a/arado/arado_160_test/jarno/pic10.png b/arado/arado_160_test/jarno/pic10.png
+deleted file mode 100644
+index 2ab253d..0000000
+Binary files a/arado/arado_160_test/jarno/pic10.png and /dev/null differ
+diff --git a/arado/arado_160_test/jarno/pic11.png b/arado/arado_160_test/jarno/pic11.png
+deleted file mode 100644
+index 487de6b..0000000
+Binary files a/arado/arado_160_test/jarno/pic11.png and /dev/null differ
+diff --git a/arado/arado_160_test/jarno/pic2.png b/arado/arado_160_test/jarno/pic2.png
+deleted file mode 100644
+index ba9a802..0000000
+Binary files a/arado/arado_160_test/jarno/pic2.png and /dev/null differ
+diff --git a/arado/arado_160_test/jarno/pic3.png b/arado/arado_160_test/jarno/pic3.png
+deleted file mode 100644
+index 1f399b7..0000000
+Binary files a/arado/arado_160_test/jarno/pic3.png and /dev/null differ
+diff --git a/arado/arado_160_test/jarno/pic4.png b/arado/arado_160_test/jarno/pic4.png
+deleted file mode 100644
+index a0886fe..0000000
+Binary files a/arado/arado_160_test/jarno/pic4.png and /dev/null differ
+diff --git a/arado/arado_160_test/markus/markus.png b/arado/arado_160_test/markus/markus.png
+deleted file mode 100644
+index f3d519a..0000000
+Binary files a/arado/arado_160_test/markus/markus.png and /dev/null differ
+diff --git a/arado/arado_160_test/markus/twitter.png b/arado/arado_160_test/markus/twitter.png
+deleted file mode 100644
+index 6c15acd..0000000
+Binary files a/arado/arado_160_test/markus/twitter.png and /dev/null differ
+diff --git a/arado/arado_160_test/mika/arado-2.png b/arado/arado_160_test/mika/arado-2.png
+deleted file mode 100644
+index 31aa437..0000000
+Binary files a/arado/arado_160_test/mika/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160_test/mika/arado.png b/arado/arado_160_test/mika/arado.png
+deleted file mode 100644
+index 414bd8b..0000000
+Binary files a/arado/arado_160_test/mika/arado.png and /dev/null differ
+diff --git a/arado/arado_160_test/mikko/arado-2.png b/arado/arado_160_test/mikko/arado-2.png
+deleted file mode 100644
+index 853765c..0000000
+Binary files a/arado/arado_160_test/mikko/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160_test/mikko/arado.png b/arado/arado_160_test/mikko/arado.png
+deleted file mode 100644
+index 7407d8f..0000000
+Binary files a/arado/arado_160_test/mikko/arado.png and /dev/null differ
+diff --git a/arado/arado_160_test/stefano/arado-2.png b/arado/arado_160_test/stefano/arado-2.png
+deleted file mode 100644
+index 2b74690..0000000
+Binary files a/arado/arado_160_test/stefano/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160_test/stefano/arado.png b/arado/arado_160_test/stefano/arado.png
+deleted file mode 100644
+index f34b681..0000000
+Binary files a/arado/arado_160_test/stefano/arado.png and /dev/null differ
+diff --git a/arado/arado_160_test/teppo/teppo.png b/arado/arado_160_test/teppo/teppo.png
+deleted file mode 100644
+index 7f9c02b..0000000
+Binary files a/arado/arado_160_test/teppo/teppo.png and /dev/null differ
+diff --git a/arado/arado_160_test/timo/arado-2.png b/arado/arado_160_test/timo/arado-2.png
+deleted file mode 100644
+index 644bc34..0000000
+Binary files a/arado/arado_160_test/timo/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160_test/timo/arado.png b/arado/arado_160_test/timo/arado.png
+deleted file mode 100644
+index 6c83231..0000000
+Binary files a/arado/arado_160_test/timo/arado.png and /dev/null differ
+diff --git a/arado/arado_160_test/ville/arado.png b/arado/arado_160_test/ville/arado.png
+deleted file mode 100644
+index b5c6592..0000000
+Binary files a/arado/arado_160_test/ville/arado.png and /dev/null differ
+diff --git a/arado/arado_160_train/anssi/anssi.png b/arado/arado_160_train/anssi/anssi.png
+deleted file mode 100644
+index ff02b2b..0000000
+Binary files a/arado/arado_160_train/anssi/anssi.png and /dev/null differ
+diff --git a/arado/arado_160_train/anssi/arado-2.png b/arado/arado_160_train/anssi/arado-2.png
+deleted file mode 100644
+index 6c875ee..0000000
+Binary files a/arado/arado_160_train/anssi/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160_train/anssi/arado.png b/arado/arado_160_train/anssi/arado.png
+deleted file mode 100644
+index 3f7d5d6..0000000
+Binary files a/arado/arado_160_train/anssi/arado.png and /dev/null differ
+diff --git a/arado/arado_160_train/anssi/twitter.png b/arado/arado_160_train/anssi/twitter.png
+deleted file mode 100644
+index 867ff68..0000000
+Binary files a/arado/arado_160_train/anssi/twitter.png and /dev/null differ
+diff --git a/arado/arado_160_train/henrik/arado-2.png b/arado/arado_160_train/henrik/arado-2.png
+deleted file mode 100644
+index 2b89a3b..0000000
+Binary files a/arado/arado_160_train/henrik/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160_train/henrik/henrik.png b/arado/arado_160_train/henrik/henrik.png
+deleted file mode 100644
+index c148e44..0000000
+Binary files a/arado/arado_160_train/henrik/henrik.png and /dev/null differ
+diff --git a/arado/arado_160_train/henrik/twitter.png b/arado/arado_160_train/henrik/twitter.png
+deleted file mode 100644
+index 09ac61d..0000000
+Binary files a/arado/arado_160_train/henrik/twitter.png and /dev/null differ
+diff --git a/arado/arado_160_train/jarno/pic1.png b/arado/arado_160_train/jarno/pic1.png
+deleted file mode 100644
+index fd7366c..0000000
+Binary files a/arado/arado_160_train/jarno/pic1.png and /dev/null differ
+diff --git a/arado/arado_160_train/jarno/pic10.png b/arado/arado_160_train/jarno/pic10.png
+deleted file mode 100644
+index 2ab253d..0000000
+Binary files a/arado/arado_160_train/jarno/pic10.png and /dev/null differ
+diff --git a/arado/arado_160_train/jarno/pic2.png b/arado/arado_160_train/jarno/pic2.png
+deleted file mode 100644
+index ba9a802..0000000
+Binary files a/arado/arado_160_train/jarno/pic2.png and /dev/null differ
+diff --git a/arado/arado_160_train/jarno/pic3.png b/arado/arado_160_train/jarno/pic3.png
+deleted file mode 100644
+index 1f399b7..0000000
+Binary files a/arado/arado_160_train/jarno/pic3.png and /dev/null differ
+diff --git a/arado/arado_160_train/jarno/pic4.png b/arado/arado_160_train/jarno/pic4.png
+deleted file mode 100644
+index a0886fe..0000000
+Binary files a/arado/arado_160_train/jarno/pic4.png and /dev/null differ
+diff --git a/arado/arado_160_train/jarno/pic5.png b/arado/arado_160_train/jarno/pic5.png
+deleted file mode 100644
+index 5a57900..0000000
+Binary files a/arado/arado_160_train/jarno/pic5.png and /dev/null differ
+diff --git a/arado/arado_160_train/jarno/pic6.png b/arado/arado_160_train/jarno/pic6.png
+deleted file mode 100644
+index 6f1555e..0000000
+Binary files a/arado/arado_160_train/jarno/pic6.png and /dev/null differ
+diff --git a/arado/arado_160_train/jarno/pic7.png b/arado/arado_160_train/jarno/pic7.png
+deleted file mode 100644
+index 29d9bb2..0000000
+Binary files a/arado/arado_160_train/jarno/pic7.png and /dev/null differ
+diff --git a/arado/arado_160_train/jarno/pic8.png b/arado/arado_160_train/jarno/pic8.png
+deleted file mode 100644
+index 840c0fc..0000000
+Binary files a/arado/arado_160_train/jarno/pic8.png and /dev/null differ
+diff --git a/arado/arado_160_train/jarno/pic9.png b/arado/arado_160_train/jarno/pic9.png
+deleted file mode 100644
+index a131bd5..0000000
+Binary files a/arado/arado_160_train/jarno/pic9.png and /dev/null differ
+diff --git a/arado/arado_160_train/jarno/twitter.png b/arado/arado_160_train/jarno/twitter.png
+deleted file mode 100644
+index 70243f5..0000000
+Binary files a/arado/arado_160_train/jarno/twitter.png and /dev/null differ
+diff --git a/arado/arado_160_train/markus/markus.png b/arado/arado_160_train/markus/markus.png
+deleted file mode 100644
+index f3d519a..0000000
+Binary files a/arado/arado_160_train/markus/markus.png and /dev/null differ
+diff --git a/arado/arado_160_train/markus/twitter.png b/arado/arado_160_train/markus/twitter.png
+deleted file mode 100644
+index 6c15acd..0000000
+Binary files a/arado/arado_160_train/markus/twitter.png and /dev/null differ
+diff --git a/arado/arado_160_train/mika/arado-2.png b/arado/arado_160_train/mika/arado-2.png
+deleted file mode 100644
+index 31aa437..0000000
+Binary files a/arado/arado_160_train/mika/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160_train/mika/mika.png b/arado/arado_160_train/mika/mika.png
+deleted file mode 100644
+index 2368a16..0000000
+Binary files a/arado/arado_160_train/mika/mika.png and /dev/null differ
+diff --git a/arado/arado_160_train/mika/twitter.png b/arado/arado_160_train/mika/twitter.png
+deleted file mode 100644
+index bf59030..0000000
+Binary files a/arado/arado_160_train/mika/twitter.png and /dev/null differ
+diff --git a/arado/arado_160_train/mikko/arado-2.png b/arado/arado_160_train/mikko/arado-2.png
+deleted file mode 100644
+index 853765c..0000000
+Binary files a/arado/arado_160_train/mikko/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160_train/mikko/mikko.png b/arado/arado_160_train/mikko/mikko.png
+deleted file mode 100644
+index 465be91..0000000
+Binary files a/arado/arado_160_train/mikko/mikko.png and /dev/null differ
+diff --git a/arado/arado_160_train/mikko/twitter.png b/arado/arado_160_train/mikko/twitter.png
+deleted file mode 100644
+index 4aa4288..0000000
+Binary files a/arado/arado_160_train/mikko/twitter.png and /dev/null differ
+diff --git a/arado/arado_160_train/stefano/arado-2.png b/arado/arado_160_train/stefano/arado-2.png
+deleted file mode 100644
+index 2b74690..0000000
+Binary files a/arado/arado_160_train/stefano/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160_train/stefano/stefano.png b/arado/arado_160_train/stefano/stefano.png
+deleted file mode 100644
+index 210d9f6..0000000
+Binary files a/arado/arado_160_train/stefano/stefano.png and /dev/null differ
+diff --git a/arado/arado_160_train/stefano/twitter.png b/arado/arado_160_train/stefano/twitter.png
+deleted file mode 100644
+index 406d3d1..0000000
+Binary files a/arado/arado_160_train/stefano/twitter.png and /dev/null differ
+diff --git a/arado/arado_160_train/teppo/teppo2.png b/arado/arado_160_train/teppo/teppo2.png
+deleted file mode 100644
+index ef06913..0000000
+Binary files a/arado/arado_160_train/teppo/teppo2.png and /dev/null differ
+diff --git a/arado/arado_160_train/timo/arado-2.png b/arado/arado_160_train/timo/arado-2.png
+deleted file mode 100644
+index 644bc34..0000000
+Binary files a/arado/arado_160_train/timo/arado-2.png and /dev/null differ
+diff --git a/arado/arado_160_train/timo/timo.png b/arado/arado_160_train/timo/timo.png
+deleted file mode 100644
+index 9be4caf..0000000
+Binary files a/arado/arado_160_train/timo/timo.png and /dev/null differ
+diff --git a/arado/arado_160_train/timo/twitter.png b/arado/arado_160_train/timo/twitter.png
+deleted file mode 100644
+index 2965450..0000000
+Binary files a/arado/arado_160_train/timo/twitter.png and /dev/null differ
+diff --git a/arado/arado_160_train/ville/twitter.png b/arado/arado_160_train/ville/twitter.png
+deleted file mode 100644
+index 8a2e668..0000000
+Binary files a/arado/arado_160_train/ville/twitter.png and /dev/null differ
+diff --git a/arado/arado_160_train/ville/ville.png b/arado/arado_160_train/ville/ville.png
+deleted file mode 100644
+index 874f9eb..0000000
+Binary files a/arado/arado_160_train/ville/ville.png and /dev/null differ
+diff --git a/src/align/create_test_train_sets.py b/src/align/create_test_train_sets.py
+index 3e91726..77f287d 100644
+--- a/src/align/create_test_train_sets.py
++++ b/src/align/create_test_train_sets.py
+@@ -3,39 +3,46 @@ import os
+ import shutil
+ 
+ 
+-arado160 = os.getcwd() + "/arado/arado_160/"
+-arado160test = os.getcwd() + '/arado/arado_160_test/'
+-arado160train = os.getcwd() + '/arado/arado_160_train/'
+-arado160directories = next(os.walk('arado/arado_160'))[1]
++arado_160 = os.getcwd() + "/arado/arado_160/"
++arado_160_test = os.getcwd() + '/arado/arado_160_test/'
++arado_160_train = os.getcwd() + '/arado/arado_160_train/'
++arado_160_directories = next(os.walk('arado/arado_160'))[1]
+ 
+ 
+ def create_files(dir):
+-    filesInDir = os.listdir(arado160 + '/' + dir)
+-    for i in xrange(0, len(filesInDir)/2):
+-        if(not os.path.isfile(arado160test + dir + '/' + filesInDir[i])):
+-            print("Copy file " + filesInDir[i] +
+-                  " to dir: " + arado160test + dir)
+-            shutil.copyfile(arado160 + dir + '/' +
+-                            filesInDir[i], arado160test + dir + '/' + filesInDir[i])
+-    for i in xrange(len(filesInDir)/2, len(filesInDir)):
+-        if(not os.path.isfile(arado160train + dir + '/' + filesInDir[i])):
+-            print("Copy file " + filesInDir[i] +
+-                  " to dir: " + arado160train + dir)
+-            shutil.copyfile(arado160 + dir + '/' +
+-                            filesInDir[i], arado160train + dir + '/' + filesInDir[i])
++    files_in_dir = os.listdir(arado_160 + '/' + dir)
++    proportion_test_train = 2
++    if(len(files_in_dir) > 2):
++        proportion_test_train = 3
++
++    for i in xrange(0, len(files_in_dir)/proportion_test_train):
++        if(not os.path.isfile(arado_160_test + dir + '/' + files_in_dir[i])):
++            print("Copy file " + files_in_dir[i] +
++                  " to dir: " + arado_160_test + dir)
++            shutil.copyfile(arado_160 + dir + '/' +
++                            files_in_dir[i], arado_160_test + dir + '/' + files_in_dir[i])
++
++    for i in xrange(len(files_in_dir)/proportion_test_train, len(files_in_dir)):
++        if(not os.path.isfile(arado_160_train + dir + '/' + files_in_dir[i])):
++            print("Copy file " + files_in_dir[i] +
++                  " to dir: " + arado_160_train + dir)
++            shutil.copyfile(arado_160 + dir + '/' +
++                            files_in_dir[i], arado_160_train + dir + '/' + files_in_dir[i])
+ 
+ 
+ def create_directories(dir):
+-    dirToAddTest = arado160test + dir
+-    dirToAddTrain = arado160train + dir
+-    if not os.path.isdir(dirToAddTest):
+-        print('Creating directory ' + dirToAddTest)
+-        os.makedirs(dirToAddTest)
+-    if not os.path.isdir(dirToAddTrain):
+-        print('Creating directory ' + dirToAddTrain)
+-        os.makedirs(dirToAddTrain)
++    dir_to_be_added_to_test = arado_160_test + dir
++    dir_to_be_added_to_train = arado_160_train + dir
+ 
++    if not os.path.isdir(dir_to_be_added_to_test):
++        print('Creating directory ' + dir_to_be_added_to_test)
++        os.makedirs(dir_to_be_added_to_test)
+ 
+-for dir in arado160directories:
++    if not os.path.isdir(dir_to_be_added_to_train):
++        print('Creating directory ' + dir_to_be_added_to_train)
++        os.makedirs(dir_to_be_added_to_train)
++
++
++for dir in arado_160_directories:
+     create_directories(dir)
+     create_files(dir)
