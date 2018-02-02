@@ -1,3 +1,0 @@
-arado/arado_160/markus/twitter.png 0 10 89 124
-arado/arado_160/markus/markus.png 77 264 992 1506
-arado/arado_160/markus/markus 2.png 1677 615 2756 2113
