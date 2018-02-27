@@ -266,6 +266,22 @@ def load_data(image_paths, do_random_crop, do_random_flip, image_size, do_prewhi
         images[i,:,:,:] = img
     return images
 
+# Faces contains the rectangles of the faces in picture
+def create_images_for(faces, img, do_random_crop, do_random_flip, image_size, do_prewhiten=True):
+    nrof_samples = len(faces)
+    images = np.zeros((nrof_samples, image_size, image_size, 3))
+
+    for i in range(nrof_samples):
+        face = faces[i]
+        cropped = img[face[1]:face[3], face[0]:face[2], :]
+        scaled = misc.imresize(cropped, (image_size, image_size), interp='bilinear')
+        images[i,:,:,:] = scaled
+        print(face.shape)
+        print(scaled.shape)
+        print(images.shape)
+    return images
+
+
 def get_label_batch(label_data, batch_size, batch_index):
     nrof_examples = np.size(label_data, 0)
     j = batch_index*batch_size % nrof_examples

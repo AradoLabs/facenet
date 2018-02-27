@@ -28,6 +28,8 @@ import tensorflow as tf
 import numpy as np
 import argparse
 import facenet
+import align.detect_face
+from scipy import misc
 import os
 import sys
 import math
@@ -45,6 +47,10 @@ def main(args):
             image_path = os.path.expanduser(args.image_path)
             print('Image filename: %s' % image_path)
 
+            print('Image find faces')
+            faces = findFaces(image_path, args)
+            print('Found %s faces', len(faces))
+
             # Load the model
             print('Loading feature extraction model')
             facenet.load_model(args.model)
@@ -54,13 +60,33 @@ def main(args):
             embeddings = tf.get_default_graph().get_tensor_by_name("embeddings:0")
             phase_train_placeholder = tf.get_default_graph().get_tensor_by_name("phase_train:0")
             embedding_size = embeddings.get_shape()[1]
-            
+
+            img = misc.imread(image_path)
+            if img.ndim == 2:
+                img = facenet.to_rgb(img)
+
+            # Save the recognized faces as images and then load them for the model
+            # TODO: Fiugure out why the model does not work if you use recognized faces directly without saving
+            paths = []
+            images = facenet.create_images_for(faces, img, False, False, args.image_size)
+            for i in range(len(images)):
+                path_i = "./temp/foo_"+`i`+".jpeg"
+                misc.imsave(path_i, images[i])
+                paths.append(path_i)
+
             # Run forward pass to calculate embeddings
             print('Calculating features for images')
-            images = facenet.load_data([image_path], False, False, args.image_size)
-            feed_dict = { images_placeholder:images, phase_train_placeholder:False }
-            emb_array = sess.run(embeddings, feed_dict=feed_dict)
-            
+            nrof_images = len(faces)
+            nrof_batches_per_epoch = int(math.ceil(1.0 * nrof_images / args.batch_size))
+            emb_array = np.zeros((nrof_images, embedding_size))
+            for i in range(nrof_batches_per_epoch):
+                start_index = i * args.batch_size
+                end_index = min((i + 1) * args.batch_size, nrof_images)
+                paths_batch = paths[start_index:end_index]
+                images = facenet.load_data(paths_batch, False, False, args.image_size)
+                feed_dict = {images_placeholder: images, phase_train_placeholder: False}
+                emb_array[start_index:end_index, :] = sess.run(embeddings, feed_dict=feed_dict)
+
             classifier_filename_exp = os.path.expanduser(args.classifier_filename)
 
             # Classify images
@@ -72,23 +98,75 @@ def main(args):
             predictions = model.predict_proba(emb_array)
             best_class_indices = np.argmax(predictions, axis=1)
             best_class_probabilities = predictions[np.arange(len(best_class_indices)), best_class_indices]
-                
+
+
             for i in range(len(best_class_indices)):
                 print('%4d  %s: %.3f' % (i, class_names[best_class_indices[i]], best_class_probabilities[i]))
 
-            
-def split_dataset(dataset, min_nrof_images_per_class, nrof_train_images_per_class):
-    train_set = []
-    test_set = []
-    for cls in dataset:
-        paths = cls.image_paths
-        # Remove classes with less than min_nrof_images_per_class
-        if len(paths)>=min_nrof_images_per_class:
-            np.random.shuffle(paths)
-            train_set.append(facenet.ImageClass(cls.name, paths[:nrof_train_images_per_class]))
-            test_set.append(facenet.ImageClass(cls.name, paths[nrof_train_images_per_class:]))
-    return train_set, test_set
+            for i in range(len(images)):
+                misc.imsave("foo_"+`i`+".jpeg", images[i])
 
+            for p in paths:
+                os.remove(p)
+
+
+def findFaces(image_path, args):
+    print('Creating networks and loading parameters')
+    with tf.Graph().as_default():
+        gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=args.gpu_memory_fraction)
+        sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
+        with sess.as_default():
+            pnet, rnet, onet = align.detect_face.create_mtcnn(sess, None)
+
+    minsize = 20  # minimum size of face
+    threshold = [0.6, 0.7, 0.7]  # three steps's threshold
+    factor = 0.709  # scale factor
+
+    filename = os.path.splitext(os.path.split(image_path)[1])[0]
+    output_filename = os.path.join("./", filename + '_recognized.png')
+
+    if not os.path.exists(output_filename):
+        try:
+            img = misc.imread(image_path)
+        except (IOError, ValueError, IndexError) as e:
+            errorMessage = '{}: {}'.format(image_path, e)
+            print(errorMessage)
+        else:
+            if img.ndim < 2:
+                print('Unable to align "%s"' % image_path)
+                return
+            if img.ndim == 2:
+                img = facenet.to_rgb(img)
+            img = img[:, :, 0:3]
+
+            bounding_boxes, _ = align.detect_face.detect_face(img, minsize, pnet, rnet, onet, threshold,
+                                                              factor)
+            nrof_faces = bounding_boxes.shape[0]
+            if nrof_faces > 0:
+                det = bounding_boxes[:, 0:4]
+                det_arr = []
+                img_size = np.asarray(img.shape)[0:2]
+                if nrof_faces > 1:
+                    for i in range(nrof_faces):
+                        det_arr.append(np.squeeze(det[i]))
+                else:
+                    det_arr.append(np.squeeze(det))
+
+                faces = []
+                for i, det in enumerate(det_arr):
+                    det = np.squeeze(det)
+                    bb = np.zeros(4, dtype=np.int32)
+                    bb[0] = np.maximum(det[0] - args.margin / 2, 0)
+                    bb[1] = np.maximum(det[1] - args.margin / 2, 0)
+                    bb[2] = np.minimum(det[2] + args.margin / 2, img_size[1])
+                    bb[3] = np.minimum(det[3] + args.margin / 2, img_size[0])
+                    faces.append(bb)
+                return faces
+
+            else:
+                print('Unable to align "%s"' % image_path)
+    else:
+        print("Output file exists")
             
 def parse_arguments(argv):
     parser = argparse.ArgumentParser()
@@ -105,6 +183,17 @@ def parse_arguments(argv):
         help='Image size (height, width) in pixels.', default=160)
     parser.add_argument('--seed', type=int,
         help='Random seed.', default=666)
+    parser.add_argument('--batch_size', type=int,
+                        help='Number of images to process in a batch.', default=90)
+    parser.add_argument('--margin', type=int,
+                        help='Margin for the crop around the bounding box (height, width) in pixels.', default=10)
+    parser.add_argument('--random_order',
+                        help='Shuffles the order of images to enable alignment using multiple processes.',
+                        action='store_true')
+    parser.add_argument('--gpu_memory_fraction', type=float,
+                        help='Upper bound on the amount of GPU memory that will be used by the process.', default=1.0)
+    parser.add_argument('--detect_multiple_faces', type=bool,
+                        help='Detect and align multiple faces per image.', default=False)
     return parser.parse_args(argv)
 
 if __name__ == '__main__':
