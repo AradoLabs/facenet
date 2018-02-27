@@ -34,6 +34,7 @@ import os
 import sys
 import math
 import pickle
+import cv2
 from sklearn.svm import SVC
 
 def main(args):
@@ -101,13 +102,18 @@ def main(args):
 
 
             for i in range(len(best_class_indices)):
-                print('%4d  %s: %.3f' % (i, class_names[best_class_indices[i]], best_class_probabilities[i]))
+                best_class = class_names[best_class_indices[i]]
+                drawFaceRectangleToImage(img,faces[i], best_class)
+                print('%4d  %s: %.3f' % (i, best_class, best_class_probabilities[i]))
 
             for i in range(len(images)):
                 misc.imsave("foo_"+`i`+".jpeg", images[i])
+            misc.imsave("out.jpeg", img)
 
             for p in paths:
                 os.remove(p)
+
+
 
 
 def findFaces(image_path, args):
@@ -167,7 +173,11 @@ def findFaces(image_path, args):
                 print('Unable to align "%s"' % image_path)
     else:
         print("Output file exists")
-            
+
+def drawFaceRectangleToImage(img, face, class_name):
+    cv2.rectangle(img, (face[0], face[1]), (face[2], face[3]), (142, 194, 0), 2)
+    cv2.putText(img, class_name, (face[0], face[3]+10), cv2.FONT_HERSHEY_PLAIN, 0.75, (255,255,255))
+
 def parse_arguments(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument('image_path', type=str,

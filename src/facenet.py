@@ -276,9 +276,6 @@ def create_images_for(faces, img, do_random_crop, do_random_flip, image_size, do
         cropped = img[face[1]:face[3], face[0]:face[2], :]
         scaled = misc.imresize(cropped, (image_size, image_size), interp='bilinear')
         images[i,:,:,:] = scaled
-        print(face.shape)
-        print(scaled.shape)
-        print(images.shape)
     return images
 
 
