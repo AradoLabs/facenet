@@ -128,51 +128,46 @@ def findFaces(image_path, args):
     threshold = [0.6, 0.7, 0.7]  # three steps's threshold
     factor = 0.709  # scale factor
 
-    filename = os.path.splitext(os.path.split(image_path)[1])[0]
-    output_filename = os.path.join("./", filename + '_recognized.png')
-
-    if not os.path.exists(output_filename):
-        try:
-            img = misc.imread(image_path)
-        except (IOError, ValueError, IndexError) as e:
-            errorMessage = '{}: {}'.format(image_path, e)
-            print(errorMessage)
-        else:
-            if img.ndim < 2:
-                print('Unable to align "%s"' % image_path)
-                return
-            if img.ndim == 2:
-                img = facenet.to_rgb(img)
-            img = img[:, :, 0:3]
-
-            bounding_boxes, _ = align.detect_face.detect_face(img, minsize, pnet, rnet, onet, threshold,
-                                                              factor)
-            nrof_faces = bounding_boxes.shape[0]
-            if nrof_faces > 0:
-                det = bounding_boxes[:, 0:4]
-                det_arr = []
-                img_size = np.asarray(img.shape)[0:2]
-                if nrof_faces > 1:
-                    for i in range(nrof_faces):
-                        det_arr.append(np.squeeze(det[i]))
-                else:
-                    det_arr.append(np.squeeze(det))
-
-                faces = []
-                for i, det in enumerate(det_arr):
-                    det = np.squeeze(det)
-                    bb = np.zeros(4, dtype=np.int32)
-                    bb[0] = np.maximum(det[0] - args.margin / 2, 0)
-                    bb[1] = np.maximum(det[1] - args.margin / 2, 0)
-                    bb[2] = np.minimum(det[2] + args.margin / 2, img_size[1])
-                    bb[3] = np.minimum(det[3] + args.margin / 2, img_size[0])
-                    faces.append(bb)
-                return faces
-
-            else:
-                print('Unable to align "%s"' % image_path)
+    try:
+        img = misc.imread(image_path)
+    except (IOError, ValueError, IndexError) as e:
+        errorMessage = '{}: {}'.format(image_path, e)
+        print(errorMessage)
     else:
-        print("Output file exists")
+        if img.ndim < 2:
+            print('Unable to align "%s"' % image_path)
+            return
+        if img.ndim == 2:
+            img = facenet.to_rgb(img)
+        img = img[:, :, 0:3]
+
+        bounding_boxes, _ = align.detect_face.detect_face(img, minsize, pnet, rnet, onet, threshold,
+                                                          factor)
+        nrof_faces = bounding_boxes.shape[0]
+        if nrof_faces > 0:
+            det = bounding_boxes[:, 0:4]
+            det_arr = []
+            img_size = np.asarray(img.shape)[0:2]
+            if nrof_faces > 1:
+                for i in range(nrof_faces):
+                    det_arr.append(np.squeeze(det[i]))
+            else:
+                det_arr.append(np.squeeze(det))
+
+            faces = []
+            for i, det in enumerate(det_arr):
+                det = np.squeeze(det)
+                bb = np.zeros(4, dtype=np.int32)
+                bb[0] = np.maximum(det[0] - args.margin / 2, 0)
+                bb[1] = np.maximum(det[1] - args.margin / 2, 0)
+                bb[2] = np.minimum(det[2] + args.margin / 2, img_size[1])
+                bb[3] = np.minimum(det[3] + args.margin / 2, img_size[0])
+                faces.append(bb)
+            return faces
+
+        else:
+            print('Unable to align "%s"' % image_path)
+
 
 def drawFaceRectangleToImage(img, face, class_name):
     cv2.rectangle(img, (face[0], face[1]), (face[2], face[3]), (142, 194, 0), 2)
