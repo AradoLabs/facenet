@@ -33,3 +33,9 @@ These are the results we got out of our trained model.
   12  ville: 0.263 arado/arado_160_test/ville/arado.png
 Accuracy: 1.000
 ```
+
+![alt tag](https://github.com/AradoLabs/facenet/blob/master/a_team_recognized.jpeg?raw=true)
+
+![alt tag](https://github.com/AradoLabs/facenet/blob/master/a_team_recognized2.jpeg?raw=true)
+
+
