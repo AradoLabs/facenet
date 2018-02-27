@@ -100,15 +100,10 @@ def main(args):
             best_class_indices = np.argmax(predictions, axis=1)
             best_class_probabilities = predictions[np.arange(len(best_class_indices)), best_class_indices]
 
-
             for i in range(len(best_class_indices)):
                 best_class = class_names[best_class_indices[i]]
                 drawFaceRectangleToImage(img,faces[i], best_class)
                 print('%4d  %s: %.3f' % (i, best_class, best_class_probabilities[i]))
-
-            for i in range(len(images)):
-                misc.imsave("foo_"+`i`+".jpeg", images[i])
-            misc.imsave("out.jpeg", img)
 
             for p in paths:
                 os.remove(p)
@@ -124,7 +119,7 @@ def findFaces(image_path, args):
         with sess.as_default():
             pnet, rnet, onet = align.detect_face.create_mtcnn(sess, None)
 
-    minsize = 20  # minimum size of face
+    minsize = 25  # minimum size of face
     threshold = [0.6, 0.7, 0.7]  # three steps's threshold
     factor = 0.709  # scale factor
 
