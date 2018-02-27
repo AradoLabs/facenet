@@ -12,6 +12,7 @@ The work is done top of the wonderful [FaceNet GitHub project](https://github.co
 - Run ‘python src/align/create_test_train_sets.py’ to create test and train data.
 - To train run: `train_arado.sh`
 - To test run: `test_arado.sh`
+- To recognize Arado people run: `recognize_arado.sh`
 
 ## Awesome results
 
